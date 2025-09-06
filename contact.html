@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CitizenOne - Contact Us</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    spline-viewer {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      height: 350px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+  </style>
 </head>
 <body>
   <nav class="glass show">
@@ -14,11 +26,36 @@
 
   <div class="container glass show">
     <h2>Contact Us</h2>
-    <p>Use this placeholder page to provide contact details or a support form for your users.</p>
+    <p>Please use the form below to get in touch with our support team.</p>
+    <form id="contactForm">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <p id="contactMsg"></p>
   </div>
 
-  <footer class="glass show">
-    <p>© 2025 CitizenOne | Unified Government Services</p>
-  </footer>
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('contactMsg').innerText = "✅ Message sent successfully!";
+      this.reset();
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.glass').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.56/build/spline-viewer.js"></script>
+<spline-viewer url="https://prod.spline.design/sireFTFLNtzPYtTd/scene.splinecode"></spline-viewer>
 </body>
 </html>

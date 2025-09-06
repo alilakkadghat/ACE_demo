@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CitizenOne - Service History</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    spline-viewer {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      height: 350px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+  </style>
 </head>
 <body>
   <nav class="glass show">
@@ -14,11 +26,35 @@
 
   <div class="container glass show">
     <h2>Your Service History</h2>
-    <p>Placeholder service records will appear here. Use this space to show past interactions and requests.</p>
+    <p>Below is a record of your past interactions and requests with CitizenOne.</p>
+    <ul class="service-list">
+      <li>
+        <h4>Passport Application</h4>
+        <p>Status: Completed</p>
+        <small>Date: 2024-09-01</small>
+      </li>
+      <li>
+        <h4>Driving License Renewal</h4>
+        <p>Status: In Progress</p>
+        <small>Date: 2025-01-15</small>
+      </li>
+    </ul>
   </div>
 
-  <footer class="glass show">
-    <p>© 2025 CitizenOne | Unified Government Services</p>
-  </footer>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.glass').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.56/build/spline-viewer.js"></script>
+<spline-viewer url="https://prod.spline.design/sireFTFLNtzPYtTd/scene.splinecode"></spline-viewer>
 </body>
 </html>

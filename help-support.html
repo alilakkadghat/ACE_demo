@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CitizenOne - Help & Support</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    spline-viewer {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      height: 350px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+  </style>
 </head>
 <body>
   <nav class="glass show">
@@ -14,11 +26,34 @@
 
   <div class="container glass show">
     <h2>Help & Support</h2>
-    <p>This page provides assistance and answers to common questions. Placeholder text can be replaced with FAQs or contact options.</p>
+    <p>Find answers to common questions in our FAQ or contact our support team for assistance.</p>
+    <div class="faq-section">
+      <h3>Frequently Asked Questions</h3>
+      <div class="faq-item">
+        <h4>How do I book an appointment?</h4>
+        <p>You can book an appointment through the 'Appointments' page.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What services are available?</h4>
+        <p>Currently, we offer services for Passports, Aadhar Updates, and Driving Licenses.</p>
+      </div>
+    </div>
   </div>
 
-  <footer class="glass show">
-    <p>© 2025 CitizenOne | Unified Government Services</p>
-  </footer>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.glass').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.56/build/spline-viewer.js"></script>
+<spline-viewer url="https://prod.spline.design/sireFTFLNtzPYtTd/scene.splinecode"></spline-viewer>
 </body>
 </html>

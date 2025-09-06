@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CitizenOne - Privacy Policy</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    spline-viewer {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      height: 350px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+  </style>
 </head>
 <body>
   <nav class="glass show">
@@ -14,11 +26,31 @@
 
   <div class="container glass show">
     <h2>Privacy Policy</h2>
-    <p>This placeholder policy outlines how user data is collected, used and protected. Replace with official privacy details.</p>
+    <p>This policy outlines how CitizenOne collects, uses, and protects your personal data.</p>
+    <div class="policy-details">
+      <h3>Data Collection</h3>
+      <p>We collect personal information such as name, email, and service history to provide and improve our services.</p>
+      <h3>Data Usage</h3>
+      <p>Your data is used to process your service requests, communicate with you, and personalize your experience.</p>
+      <h3>Data Protection</h3>
+      <p>We implement security measures to protect your data from unauthorized access or disclosure.</p>
+    </div>
   </div>
 
-  <footer class="glass show">
-    <p>© 2025 CitizenOne | Unified Government Services</p>
-  </footer>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.glass').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.56/build/spline-viewer.js"></script>
+<spline-viewer url="https://prod.spline.design/sireFTFLNtzPYtTd/scene.splinecode"></spline-viewer>
 </body>
 </html>
