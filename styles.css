@@ -525,7 +525,7 @@ input:focus, textarea:focus, select:focus {
 /* Footer */
 footer {
   background: rgba(30,58,138,0.7);
-  color: #210d0d00    ;
+  color: #000;
   text-align: center;
   padding: 2rem 1rem;
   margin-top: 3rem;
