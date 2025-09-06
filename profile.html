@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Phone Verification</title>
-
+  <title>CitizenOne - Phone Verification</title>
   <!-- CSP: allow same-origin resources; allow inline script for this page -->
   <meta http-equiv="Content-Security-Policy"
         content="default-src 'self';
@@ -63,7 +62,8 @@
     <pre id="out">(nothing yet)</pre>
   </div>
 
-  <script>
+  <script type="module">
+    import { addUserInfo } from './supabase.js';
     const out = document.getElementById('out');
     const btnSend = document.getElementById('btnSend');
     const btnCheck = document.getElementById('btnCheck');
@@ -127,6 +127,9 @@
         });
         const data = await res.json();
         show(data);
+        if (data.approved) {
+          await addUserInfo(phone, '', '', '');
+        }
       } catch (e) {
         show({ error: e.message || 'Network error' });
       } finally {
