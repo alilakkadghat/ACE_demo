@@ -113,7 +113,6 @@
     </form>
     <p id="loginMsg"></p>
     <div class="extra-links">
-      <p><a href="profile.html">Verify your phone</a></p>
       <p><a href="index.html">🏠 Back to Home</a></p>
       <p>Don’t have an account? <a href="#">Register</a></p>
     </div>
@@ -123,8 +122,10 @@
     // Form submit logic
     document.getElementById('loginForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      document.getElementById('loginMsg').innerText = "✅ Login successful (demo only)!";
-      this.reset();
+      document.getElementById('loginMsg').innerText = "✅ Login successful (redirecting)!";
+      setTimeout(() => {
+        window.location.href = 'profile1.html';
+      }, 1500);
     });
 
     // Animation logic
